@@ -68,7 +68,6 @@ public class JournalEntryController {
     public ResponseEntity<?> deleteJournalEntryById(@PathVariable ObjectId myId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-        journalEntryService.deleteById(myId, userName);
         boolean removed = journalEntryService.deleteById(myId, userName);
         if (removed) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

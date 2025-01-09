@@ -23,6 +23,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     public void saveEntry(User user){
         user.setPassword(user.getPassword());
         user.setRoles(Arrays.asList("USER"));
@@ -31,7 +33,7 @@ public class UserService {
 
     public boolean saveNewUser(User user){
         try{
-            user.setPassword(user.getPassword());
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setRoles(Arrays.asList("USER"));
             userRepository.save(user);
             return true;
@@ -43,11 +45,10 @@ public class UserService {
             log.trace("hdhdhhd");
             return false;
         }
-
     }
 
     public void saveAdmin(User user) {
-        user.setPassword(user.getPassword());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Arrays.asList("USER", "ADMIN"));
         userRepository.save(user);
     }

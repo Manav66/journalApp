@@ -25,7 +25,7 @@ public class JournalEntryService {
     @Autowired
     private UserService userService;
 
-    private static final Logger logger = LoggerFactory.getLogger(JournalEntryService.class);
+    //private static final Logger logger = LoggerFactory.getLogger(JournalEntryService.class);
 
     @Transactional
     public void saveEntry(JournalEntry journalEntry, String userName){
@@ -34,9 +34,9 @@ public class JournalEntryService {
                 journalEntry.setDate(LocalDateTime.now());
                 JournalEntry saved = journalEntryRepository.save(journalEntry);
                 user.getJournalEntries().add(saved);
-                userService.saveEntry(user);
+                userService.saveUser(user);
             } catch (Exception e){
-                logger.info("hahahha");
+               //    logger.info("hahahha");
                 throw new RuntimeException("An error occurred while saving the entry", e);
             }
     }
