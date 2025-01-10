@@ -1,22 +1,16 @@
 package net.learningproj.journalApp.controller;
 
 import net.learningproj.journalApp.api.response.WeatherResponse;
-import net.learningproj.journalApp.entity.JournalEntry;
 import net.learningproj.journalApp.entity.User;
 import net.learningproj.journalApp.repository.UserRepository;
-import net.learningproj.journalApp.service.JournalEntryService;
 import net.learningproj.journalApp.service.UserService;
 import net.learningproj.journalApp.service.WeatherService;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
