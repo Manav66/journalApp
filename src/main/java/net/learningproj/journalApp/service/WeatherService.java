@@ -13,7 +13,7 @@ public class WeatherService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public WeatherResponse getWeather(){
+    public WeatherResponse getWeather(String city){
         String finalAPI = "https://api.weatherstack.com/current?access_key=5728388c0e0103a8d8f95a58ca467e87&query=New Delhi";
         ResponseEntity<WeatherResponse> response = restTemplate.exchange(finalAPI, HttpMethod.GET, null, WeatherResponse.class);
         return response.getBody();
